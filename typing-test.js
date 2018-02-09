@@ -209,6 +209,7 @@ function isTimer(seconds) {
         let typingTimer = setInterval(() => {
             if (time <= 0) {
                 clearInterval(typingTimer);
+                finishTest();
             } else {
                 time -= 1;
                 let timePad = (time < 10) ? ("0" + time) : time; // zero padded
@@ -217,6 +218,28 @@ function isTimer(seconds) {
         }, 1000);
     } else if (one == "0:00") {return false;}
     return true;
+}
+
+function sendAnalytics(wpm, accuracy, total, correct, incorrect, typed) {
+    result = wpm+"-"+accuracy+"-"+total+"-"+correct+"-"+incorrect+"-"+typed;
+    
+    // Send to Google Analytics
+    ga('send', 'event', 'Typetest', 'result', result);
+    
+    // Send to clicky
+    clicky.log('typetest/#result', result);
+}
+
+var finished = false;
+function finishTest() {
+    // Avoid calculating more than once.
+    if (finished) {
+        return;
+    } else {
+        finished = true;
+    }
+    
+    calculateWPM(wordData);
 }
 
 function calculateWPM(data) {
@@ -245,7 +268,8 @@ function calculateWPM(data) {
     let wpmClass = $("li:nth-child(2) .wpm-value")[0].classList;
     if (accuracy > 80) {wpmClass.add("correct-word-c");}
     else { wpmClass.add("incorrect-word-c");}
-
+    
+    sendAnalytics(wpm, accuracy, total, correct, incorrect, typed);
     console.log(wordData);
 }
 
@@ -276,14 +300,15 @@ function typingTest(e) {
                 $("#typebox")[0].value = ""; // clear typebox after each word
             }
             wordData.typed += 1; // count each valid character typed
-        }else {
+        } else {
             // Display typing test results.
-            calculateWPM(wordData);
+            finishTest();
         }
     }
 }
 
 function restartTest() {
+    finished = false;
     $("#typebox")[0].value = "";
     location.reload();
 }
