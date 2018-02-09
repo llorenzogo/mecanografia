@@ -15,7 +15,7 @@ if (navigator.userAgent.match(/firefox/i)) {
 
 // Sorted list of the 500 most common English words.
 let wordList = [
-     "consigna", "flamear", "importante", "nervios", "pelo", "señales", "piso", "temprano", "vaca",
+    "consigna", "flamear", "importante", "nervios", "pelo", "señales", "piso", "temprano", "vaca",
     "zanahoria", "acierto", "bibliografía", "chupete", "defender", "eso", "pensar", "doblar", "decir",
     "encuadrar", "huso", "indeciso", "bajo", "era", "linea", "para", "antes", "en",
     "encender", "morro", "porque", "paredes", "mismo", "como", "significado", "yo", "diferenciar",
@@ -65,7 +65,7 @@ let wordList = [
     "muchas", "generoso", "entonces", "apagar", "pupila", "necesidad", "deber", "casa",
     "escribir", "pintura", "gustar", "intentar", "asentir", "importe", "nada", "repetir",
     "perdido", "animal", "largo", "punto", "hacer", "madre", "cosa", "mundo",
-    "ver", "cerca", "punto", "construir", "dos", "remoto", "viajar", "tierra", "yuxtapuesto",];
+    "ver", "cerca", "punto", "construir", "dos", "remoto", "viajar", "tierra", "yuxtapuesto"];
 
 //////////////////////////////////////////
 
