@@ -162,13 +162,13 @@ function isTimer(seconds) {
 }
 
 function sendAnalytics(wpm, accuracy, total, correct, incorrect, typed) {
-    result = wpm + "-" + accuracy + "-" + total + "-" + correct + "-" + incorrect + "-" + typed;
-
+    resultado = wpm + "-" + accuracy + "-" + total + "-" + correct + "-" + incorrect + "-" + typed;
+    console.log(resultado);
     // Send to Google Analytics
     // ga('send', 'event', 'Typetest', 'result', result);
 
     // Send to clicky
-    clicky.log('typetest/#result', result);
+    clicky.log('typetest/#result', resultado);
 }
 
 var finished = false;
