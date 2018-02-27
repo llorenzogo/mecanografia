@@ -167,8 +167,7 @@ function sendAnalytics(wpm, accuracy, total, correct, incorrect, typed) {
     // Send to Google Analytics
     // ga('send', 'event', 'Typetest', 'result', result);
 
-    // Send to clicky
-    clicky.log('typetest/#result', resultado);
+    _LTracker.push(resultado);
 }
 
 var finished = false;
